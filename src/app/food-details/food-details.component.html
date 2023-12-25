@@ -1,0 +1,54 @@
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Food Details</h5>
+      </div>
+
+
+      <div class="modal-body">
+        <div *ngIf="food" class="custom-label">
+          <div>
+            <label><b>Name : </b></label>
+            {{ food.name }}
+          </div>
+          <div>
+            <label><b>Price : </b></label>
+            {{ food.price|currency }}
+          </div>
+          <div>
+            <label><b>Cook Time :</b></label>
+            {{ food.cookTime }}
+          </div>
+          <div><div>
+            <label><b>Description :</b></label>
+            {{ food.description }}
+          </div>
+          <div>
+          <div class="imagediv">
+            <img src="{{food.imageUrl}}" alt="">
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="modal-footer">
+        <button
+          (click)="backtolist()"
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

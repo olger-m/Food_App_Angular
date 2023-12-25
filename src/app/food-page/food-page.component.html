@@ -1,0 +1,11 @@
+<div class="container">
+  <img [src]="food.imageUrl" alt="">
+  <div class="details">
+  <div class="header">
+    <span>{{food.name}}</span>
+  </div>
+  <div class="price">{{food.price | currency}}</div>
+  <div class="description">{{food.description}}</div>
+  <button class="addtocartbtn" (click)="addToCart(food)">Add to Cart</button>
+</div>
+</div>

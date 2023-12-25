@@ -1,0 +1,43 @@
+
+<h1>Shopping Cart</h1>
+<div class="row col-10" *ngIf="cart">
+  <p>
+    You have {{cart.totalitems}} items in your shopping cart. 
+  </p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Product</th>
+        <th class="text-center" style="width: 230px">Quantity</th>
+        <th class="text-right" style="width: 200px">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cartitem of cart.items">
+        <td>
+         <div [style.backgroundImage]="'url(' + cartitem.food.imageUrl + ')'" class="thumbnail">
+</div>
+        </td>
+        <td>
+          {{ cartitem.food.name }}
+        </td>
+        <td>
+          <input [(ngModel)]="cartitem.quantity" type="number" min="1" max="99" step="1"/>
+        </td>
+        <td class="text-right">
+          {{ cartitem.getPrice()| currency}}
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="text-right">{{ cart.totalPrice| currency}}</th>
+      </tr>
+    </tfoot> 
+  </table>
+
+</div>

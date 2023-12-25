@@ -1,0 +1,14 @@
+
+
+<div className="row">
+  <h1 style="text-align: center">Check out our Menu</h1>
+  <div className="cards__container">
+    <div className="cards__deck">
+      <div class="row row-cols-1 row-cols-md-4 g-2">
+        <div *ngFor="let food of foodstosisplay" class="col">
+          <carditem style="padding: 0.5px" [food]="food"></carditem>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<!-- <button
+  *ngIf="!clickedAddBook"
+  type="submit"
+  class="btn btn-primary"
+  (click)="showAddBook()"
+>
+  Add Book
+</button>
+<create-food *ngIf="clickedAddBook"></create-food>
+<button *ngIf="clickedAddBook" class="btn btn-primary" (click)="showAddBook()">
+  Back
+</button> -->
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Food List</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th (click)="sort('name')">Name</th>
+          <th (click)="sort('price')">Price</th>
+          <th (click)="sort('cook-time')">Cook-Time</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let food of listOfBooksToDisplay">
+          <td>{{ food.id }}</td>
+          <td>{{ food.name }}</td>
+          <td>{{ food.price |currency }}</td>
+          <td>{{ food.cookTime }} min ⏲</td>
+          <td class="description">{{ food.description }}</td>
+          <td><img [src]="food.imageUrl" alt="" width=100 height=100></td>
+          <td class="action-btn">
+            <button (click)="onDelete(food.id)" class="btn btn-danger">
+              Delete
+            </button>
+            <button
+              (click)="editBook(food.id)"
+              class="btn btn-info"
+              style="margin-left: 10px"
+            >
+              Update
+            </button>
+            <button
+              (click)="foodDetails(food.id)"
+              class="btn btn-info"
+              style="margin-left: 10px"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
+              Details
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
