@@ -18,6 +18,11 @@ import { CartService } from './service/cart.service';
 import { FoodDetailsComponent } from './food-details/food-details.component';
 import { Cart } from './model/Cart';
 import { UpdateFoodComponent } from './update-food/update-food.component';
+import { LoginComponent } from './login/login.component';
+import { CheckOutComponent } from './check-out/check-out.component';
+import { OrderdettailsComponent } from './orderdettails/orderdettails.component';
+import { CreateorderComponent } from './createorder/createorder.component';
+import { CreateFoodComponent } from './create-food/create-food.component';
 
 @NgModule({
  declarations: [
@@ -32,6 +37,11 @@ import { UpdateFoodComponent } from './update-food/update-food.component';
     FoodListComponent,
     FoodDetailsComponent,
     UpdateFoodComponent,
+    LoginComponent,
+    CheckOutComponent,
+    OrderdettailsComponent,
+    CreateorderComponent,
+    CreateFoodComponent,
   ],
  imports: [
     BrowserModule,

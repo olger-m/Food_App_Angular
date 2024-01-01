@@ -11,6 +11,8 @@
         <th>Product</th>
         <th class="text-center" style="width: 230px">Quantity</th>
         <th class="text-right" style="width: 200px">Price</th>
+         <th class="text-right" style="width: 200px">Remove</th>
+        
       </tr>
     </thead>
     <tbody>
@@ -27,7 +29,8 @@
         </td>
         <td class="text-right">
           {{ cartitem.getPrice()| currency}}
-        </td>
+        </td><td class="text-right"><button (click)="removeFromCart(cartitem.food.id)" class="btn btn-danger">Remove</button></td>
+        
       </tr>
     </tbody>
     <tfoot>
@@ -36,8 +39,10 @@
         <th></th>
         <th></th>
         <th class="text-right">{{ cart.totalPrice| currency}}</th>
+        <th></th>
       </tr>
     </tfoot> 
   </table>
 
 </div>
+<button (click)="gotocheckout()" class="btn btn-primary">Proceed to checkout</button>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart } from '../model/Cart';
 import { CartService } from '../service/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-page',
@@ -8,13 +9,10 @@ import { CartService } from '../service/cart.service';
   styleUrls: ['./cart-page.component.css']
 })
 export class CartPageComponent implements OnInit {
-convertToNumber(value: string): number {
- return parseInt(value, 10);
-}
 
 
 cart: Cart;
-constructor(private cartService:CartService){
+constructor(private router:Router, private cartService:CartService){
 
 }
 
@@ -27,8 +25,11 @@ setCart(){
   this.cart=this.cartService.getCart();
 }
 
-removeFromCart(){
-  this.cartService.removeFromCart(1)
+removeFromCart(id:number){
+  this.cartService.removeFromCart(id)
+}
+gotocheckout() {
+this.router.navigate(['/checkout']);
 }
 
 }

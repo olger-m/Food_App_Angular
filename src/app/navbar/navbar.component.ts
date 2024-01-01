@@ -13,6 +13,7 @@ import { CartService } from '../service/cart.service';
  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+
 cart: Cart;
 cartquantity:Cart
  searchForm = new FormGroup({
@@ -34,6 +35,9 @@ onSubmit(inpu:string) {
    }
    gotoCart() {
 this.router.navigate(['/cart']);
+}
+gotoLogin() {
+this.router.navigate(['/login']);
 }
 
  ngOnInit(): void {

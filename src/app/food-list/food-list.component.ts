@@ -15,33 +15,19 @@ import { Food } from '../model/food';
 })
 export class FoodListComponent implements OnInit {
 input: string = " ";
-listOfBooks!: Food[];
-food :Food;
-// id:number;
-clickedAddBook: boolean=false;
+listOfFoods!: Food[];
+food :Food;;
    sortKey: string="null";
    sortOrder: string="null";
    @Input() searchEvent: any;
-  listOfBooksToDisplay: Food[];
+  listOfFoodsToDisplay: Food[];
  constructor(private route: ActivatedRoute,private router: Router,private foodService: FoodService,private search:SearchService) { }
-
-filterBooks(input: string): void {
- if (!input) {
-    this.listOfBooksToDisplay = this.listOfBooks;
- } else {
-    this.listOfBooksToDisplay = this.listOfBooks.filter(book =>
-      book.name.toLowerCase().includes(input.toLowerCase())
-    );
- }
-}
-
 
  ngOnInit(): void {
   
   console.log(this.input)
   this.reloadData();
 
-  // this.applyFilter()
  }
 
   sort(key: string) {
@@ -51,7 +37,7 @@ filterBooks(input: string): void {
       this.sortKey = key;
       this.sortOrder = 'asc';
     }
-   this.listOfBooks.sort((a:any , b: any) => {
+   this.listOfFoods.sort((a:any , b: any) => {
       const firstValue = typeof a[key] === 'string' ? a[key].toLowerCase() : a[key];
       const secondValue = typeof b[key] === 'string' ? b[key].toLowerCase() : b[key];
       if (firstValue < secondValue) {
@@ -66,13 +52,13 @@ filterBooks(input: string): void {
 
  reloadData() {
   this.foodService.getFoods().subscribe(data=>{
-    this.listOfBooks=data;
+    this.listOfFoods=data;
     this.search.currentMessage.subscribe(message=>
       {this.input=message
       if (message==="default message") {
-    this.listOfBooksToDisplay = this.listOfBooks;
+    this.listOfFoodsToDisplay = this.listOfFoods;
  } else {
-    this.listOfBooksToDisplay = this.listOfBooks.filter(book =>
+    this.listOfFoodsToDisplay = this.listOfFoods.filter(book =>
       book.name.toLowerCase().includes(message.toLowerCase())
     );}})});}
 
@@ -86,29 +72,22 @@ filterBooks(input: string): void {
         error => console.log(error));
 }
   gotoList() {
-    this.router.navigate(['/book-list']);
+    this.router.navigate(['/food-list']);
   }
+  gotoCreate() {
+    this.router.navigate(['/create']);
+}
 
    foodDetails(id: number){
     this.router.navigate(['details', id]);
   }
 
-//  onSubmit(formData: String): void {
-//     this.foodService.addbookv1(formData).subscribe()
-//  }
- showAddBook(): void {
-  this.clickedAddBook=!this.clickedAddBook
- }
-
- editBook(bookId: number) {
-    this.router.navigate(['updateFood', bookId]);
+ editFood(foodId: number) {
+    this.router.navigate(['updateFood', foodId]);
     
 }
 onSearch(event: Event) {
  const searchForm = (event.target as HTMLInputElement).value;
  console.log(searchForm);
 }
-// aBook(formData: string) {
-// this.foodService.addbookv1(formData)
-// }
 }

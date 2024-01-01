@@ -7,6 +7,7 @@ import { Food } from '../model/food';
   providedIn: 'root'
 })
 export class FoodService {
+
  
     private apiLink
    = 'http://localhost:8080/api/v1/foods';
@@ -28,11 +29,15 @@ export class FoodService {
     deleteFood(id: number): Observable<any> {
     return this.http.delete(`${this.apiLink}/${id}`, { responseType: 'text' });
   }
+   createFood(food: Food): Observable<Object> {
+    return this.http.post(`${this.apiLink
+    }`, food);
+  }
 
 getAllFoods():string[]{
 return[
   '/assets/images/food1.jpg',
-    '/assets/images/food2.jpg',
+  '/assets/images/food2.jpg',
   '/assets/images/food3.jpg',
   '/assets/images/food4.jpg',
   '/assets/images/food5.jpg'

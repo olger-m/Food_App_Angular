@@ -1,34 +1,24 @@
-<!-- <button
-  *ngIf="!clickedAddBook"
-  type="submit"
-  class="btn btn-primary"
-  (click)="showAddBook()"
->
-  Add Book
-</button>
-<create-food *ngIf="clickedAddBook"></create-food>
-<button *ngIf="clickedAddBook" class="btn btn-primary" (click)="showAddBook()">
-  Back
-</button> -->
+
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h2>Food List</h2>
   </div>
+  <button style="margin-bottom: 1rem;" (click)="gotoCreate()" class="btn btn-secondary">Add Food</button>
   <div class="panel-body">
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Id</th>
-          <th (click)="sort('name')">Name</th>
-          <th (click)="sort('price')">Price</th>
-          <th (click)="sort('cook-time')">Cook-Time</th>
+          <th (click)="sort('id')" >Id <i class="bi bi-sort-down"></i></th>
+          <th (click)="sort('name')">Name <i class="bi bi-sort-down"></i></th>
+          <th (click)="sort('price')">Price <i class="bi bi-sort-down"></i></th>
+          <th (click)="sort('cookTime')">Cook-Time <i class="bi bi-sort-down"></i></th>
           <th>Description</th>
           <th>Image</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let food of listOfBooksToDisplay">
+        <tr *ngFor="let food of listOfFoodsToDisplay">
           <td>{{ food.id }}</td>
           <td>{{ food.name }}</td>
           <td>{{ food.price |currency }}</td>
@@ -40,7 +30,7 @@
               Delete
             </button>
             <button
-              (click)="editBook(food.id)"
+              (click)="editFood(food.id)"
               class="btn btn-info"
               style="margin-left: 10px"
             >
